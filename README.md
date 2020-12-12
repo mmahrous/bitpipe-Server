@@ -7,7 +7,7 @@ bitpipe is a reverse proxy that creates a secure tunnel between your local api s
 Copyright © Mohamed Mahrous, 2020
 </p>
 <p style="float:left; width: 60%; text-align:center;">
-<br />This work is licensed under a MIT<
+<br />This work is licensed under a MIT
 </p>
 <p style="float:left; width: 20%;">
 Contact me:
