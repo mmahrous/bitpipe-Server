@@ -14,10 +14,10 @@ class Server {
 	_onRequest(req, res) {
 		const socketId = req.headers.host.split('.')[0];
 		const socket = this._tcpServer.getSocket(socketId);
-		socket.resume()
+		// socket.resume()
 		let id = nanoid();
 		this._responses[socketId] = res;
-		socket.write(JSON.stringify({
+		socket.emit('req', JSON.stringify({
 			url: req.url,
 			method: req.method,
 			headers: req.headers,
@@ -26,12 +26,10 @@ class Server {
 		
 		const dataListener = (chunk) => {
 			let _id
-			if (chunk.toString().startsWith('CH')) {
-				_id = chunk.toString().slice(2)
-			} else if (chunk.toString() === 'EOR') {
+			if (chunk.toString() === 'EOR') {
 				res.end(() => {
-					socket.removeListener('data', dataListener)
-					socket.pause()
+					// socket.removeListener('data', dataListener)
+					// socket.pause()
 				});
 			} else {
 				res.write(chunk)
@@ -50,7 +48,7 @@ class Server {
 			// }
 		}
 
-		socket.on('data', dataListener);
+		socket.on(id, dataListener);
 	}
 
 	_inflate(data) {

@@ -4,6 +4,7 @@
   "description": "Tunneling your localhost connection.",
   "main": "index.js",
   "dependencies": {
+    "fast-tcp": "^3.3.2",
     "nanoid": "^3.1.20"
   },
   "devDependencies": {},
